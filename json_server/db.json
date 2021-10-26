@@ -1,0 +1,28 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Sản phẩm 1",
+        "price": "$200",
+        "image": "https://lux.electricianexp.com/wp-content/uploads/2019/09/2019-09-19_22-16-18.png"
+      },
+      {
+        "id": 2,
+        "name": "Sản phẩm 2",
+        "price": "$500",
+        "image": "https://lux.electricianexp.com/wp-content/uploads/2019/09/2019-09-19_22-17-40.png"
+      },
+      {
+        "id": 3,
+        "name": "Sản phẩm 3",
+        "price": "$500",
+        "image": "https://lux.electricianexp.com/wp-content/uploads/2019/09/2019-09-19_22-18-50.png"
+      },
+      {
+        "id": 4,
+        "name": "Sản phẩm 4",
+        "price": "$1000",
+        "image": "https://lux.electricianexp.com/wp-content/uploads/2019/09/2019-09-19_22-20-02.png"
+      }
+    ]
+}
