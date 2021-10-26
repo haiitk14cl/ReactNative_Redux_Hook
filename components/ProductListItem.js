@@ -3,37 +3,33 @@ import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import IconTable from './../assets/tablet.png';
 
 export default function ProductListItem(props) {
-  let {product, onPress} = props;
+  let {product, onPress, onPressBuy} = props;
   return (
-    // <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
-
     <View style={styles.container}>
-      <View style={styles.containerImage}>
-        <Image
-          // source={product.image}
-          source={{
-            uri: product.image,
-          }}
-          onError={e => console.log(e.nativeEvent.error)}
-          style={styles.categoryImage}
-        />
-      </View>
-      <View style={styles.productName}>
-        <Text
-          style={styles.productNameTitle}>
-          {product.name}
-        </Text>
-      </View>
+      <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
+        <View style={styles.containerImage}>
+          <Image
+            // source={product.image}
+            source={{
+              uri: product.image,
+            }}
+            onError={e => console.log(e.nativeEvent.error)}
+            style={styles.categoryImage}
+          />
+        </View>
+        <View style={styles.productName}>
+          <Text style={styles.productNameTitle}>{product.name}</Text>
+        </View>
+      </TouchableOpacity>
       <View style={styles.productBottom}>
         <View style={styles.productPrice}>
           <Text>{product.price}</Text>
         </View>
         <View style={styles.buttonBuy}>
-          <Text style={styles.buttonBuyTitle}>+ MUA</Text>
+          <Text style={styles.buttonBuyTitle} onPress={() => { onPressBuy(product) }}>+ MUA</Text>
         </View>
       </View>
     </View>
-    // </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({
@@ -74,15 +70,15 @@ const styles = StyleSheet.create({
   productNameTitle: {
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    fontSize: 15
+    fontSize: 15,
   },
   productPrice: {
     margin: 8,
   },
   buttonBuy: {
-    margin: 8
+    margin: 8,
   },
   buttonBuyTitle: {
     color: '#2acaea',
-  }
+  },
 });

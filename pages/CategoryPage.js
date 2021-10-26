@@ -27,6 +27,12 @@ export default function CategoryPage(props) {
     dispatch(actionGetProductRequest());
   }, [dispatch]);
 
+  const onPressBuy = (product) => {
+    console.log(product);
+    Alert.alert('Đã thêm giỏ hàng')
+  }
+
+
   return (
      
       <FlatList
@@ -38,7 +44,11 @@ export default function CategoryPage(props) {
               product={item}
               onPress={() =>
                 Alert.alert('Chi tiết sản phẩm')
-              }></ProductListItem>
+              }
+              onPressBuy = {onPressBuy}
+              >
+
+              </ProductListItem>
           </View>
         )}
         numColumns={2}
