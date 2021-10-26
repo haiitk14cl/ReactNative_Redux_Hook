@@ -6,17 +6,22 @@
  * @flow strict-local
  */
 
-import React, {useState} from 'react';
+import React from 'react';
 import type {Node} from 'react';
-import {StyleSheet} from 'react-native';
+import {Provider} from 'react-redux';
+import configureStore from './redux/_config/configureStore';
+
 import AppNav from './AppNav';
-import axios from 'axios';
+
+const store = configureStore();
 
 // axios.defaults.baseURL = "https://2c56-14-226-224-177.ngrok.io";
 
 const App: props => Node = () => {
   return (
-    <AppNav/>
+    <Provider store={store}>
+      <AppNav />
+    </Provider>
   );
 };
 

@@ -4,7 +4,6 @@ import IconTable from './../assets/tablet.png';
 
 export default function ProductListItem(props) {
   let {product, onPress} = props;
-
   return (
     // <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
 
