@@ -2,7 +2,6 @@ import * as Types from './../_constants/actionType';
 import { callApi } from './../_utils/apiCaller';
 
 export const actionGetProductRequest = () => {
-    console.log("actionGetProductRequest----------------------");
     return dispatch => {
         dispatch({ type: Types.FETCH_PRODUCTS_LOADING });
         return callApi('products', 'GET', {}).then(res => {

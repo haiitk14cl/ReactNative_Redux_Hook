@@ -6,6 +6,11 @@ import axios from 'axios';
 
 import ProductListItem from './../components/ProductListItem';
 import {actionGetProductRequest} from './../redux/_actions/productActions';
+import { 
+  actionInsertCartRequest, 
+  actionGetCartRequest, 
+  actionUpdateCartRequest 
+} from './../redux/_actions/cartActions';
 
 // import SP_1 from './../assets/sp_1.png';
 // import SP_2 from './../assets/sp_2.png';
@@ -22,16 +27,41 @@ export default function CategoryPage(props) {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productReducers.data);
   const { isLoading } = useSelector((state) => state.productReducers);
+  const carts = useSelector((state) => state.cartReducers.data)
 
   useEffect(() => {
     dispatch(actionGetProductRequest());
+    dispatch(actionGetCartRequest());
   }, [dispatch]);
 
   const onPressBuy = (product) => {
-    console.log(product);
-    Alert.alert('Đã thêm giỏ hàng')
+    console.log("onPressBuy CARTS--------------");
+    
+    // var data = {};
+    var newArray = carts.filter(function (el) {
+      return el.id == product.id;
+    });
+    
+
+    if (newArray.length === 0 ) {
+      product.quatity = 1;
+      dispatch(actionInsertCartRequest(product)); 
+    }
+    else {
+      var cart = newArray[0];
+      cart.quatity += 1;
+      dispatch(actionUpdateCartRequest(product.id, cart ))
+    }
+
+    // if (cart.length > 0) {
+    //   data = cart[0];
+    //   data.quatity += 1;
+    // }
+    // dispatch(actionInsertCartRequest(data)); 
+    dispatch(actionGetCartRequest());
   }
 
+  
 
   return (
      
